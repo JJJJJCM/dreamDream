@@ -16,6 +16,11 @@ app.use("/public", express.static("public"));
 app.use(cookieParser());
 app.use(express.json());
 
+app.use(express.static("./assets"));
+app.use("/assets", express.static("assets"));
+
+app.use("/management", managerRouter);
+
 // 메인 페이지
 app.get("/", (req, res) => {
   res.render("index.ejs");

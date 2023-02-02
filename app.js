@@ -1,8 +1,9 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
 require("dotenv").config();
-const managerRouter = require("./routes/manager.routes");
+// const managerRouter = require("./routes/manager.routes");
 
+const loginRouter = require("./routes/login.routes");
 const app = express();
 
 // socket.io
@@ -20,6 +21,9 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.render("index.ejs");
 });
+
+
+app.use("/login", loginRouter);
 
 http.listen(process.env.PORT, () => {
   console.log(`${process.env.PORT} 포트가 열렸습니다`);

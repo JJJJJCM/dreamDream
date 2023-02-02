@@ -24,5 +24,13 @@
     "jest": "^29.4.1",
     "nodemon": "^2.0.20",
     "sequelize-cli": "^6.6.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JJJJJCM/dreamDream.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JJJJJCM/dreamDream/issues"
+  },
+  "homepage": "https://github.com/JJJJJCM/dreamDream#readme"
 }

@@ -1,4 +1,4 @@
-const ManagerRepository = require("../repositories/manager.Repository.js");
+const ManagerRepository = require("../repositories/manager.Repository");
 
 class ManagerService {
   managerRepository = new ManagerRepository();

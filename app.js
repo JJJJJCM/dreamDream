@@ -1,10 +1,7 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
 require("dotenv").config();
-<<<<<<< HEAD
 const managerRouter = require("./routes/manager.routes");
-=======
->>>>>>> 197e214 (굿즈등록하기)
 
 const app = express();
 
@@ -21,11 +18,8 @@ app.use(express.json());
 
 app.use(express.static("./assets"));
 app.use("/assets", express.static("assets"));
-<<<<<<< HEAD
 
 app.use("/management", managerRouter);
-=======
->>>>>>> 197e214 (굿즈등록하기)
 
 // 메인 페이지
 app.get("/", (req, res) => {

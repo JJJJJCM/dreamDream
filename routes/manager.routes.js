@@ -27,8 +27,13 @@ router.put(
   upload.single("image"),
   managerController.goodsModify
 );
+
 router.get("/", (req, res) => {
   res.render("management.ejs");
+});
+
+router.get("/goods", (req, res) => {
+  res.render("management-goods.ejs");
 });
 
 router.get("/customer/:id", managerController.customerGet);

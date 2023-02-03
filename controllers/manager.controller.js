@@ -4,12 +4,13 @@ const { Customer } = require("../models/customer.js");
 class ManagerController {
   managerService = new ManagerService();
   // 상품 추가
-  goodsEnroll = async (req, res) => {
+  goodsEnroll = async (req, res, next) => {
     try {
+      const { seller, goodsname, explain, quantity, price } = req.body;
+      console.log(seller);
+      const image = req.file.path;
       console.log(req.body);
-      const { seller, goodsname, explain, quantity, price, image } = req.body;
-      // const image = req.file.path;
-      console.log(seller, goodsname, explain, quantity, price, image);
+      console.log(image);
       const goodsEnrollData = await this.managerService.goodsEnroll(
         seller,
         goodsname,
@@ -18,9 +19,10 @@ class ManagerController {
         quantity,
         price
       );
+      res.status(200).json({ errorMessage: "등록 성공" });
     } catch (err) {
       console.log(err);
-      res.status(400).json({ errorMessage: "요청 실패" });
+      res.status(400).json({ errorMessage: "등록 실패" });
     }
   };
   // 상품 수정

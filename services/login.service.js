@@ -5,6 +5,7 @@ class LoginService {
      
     loginRepository = new LoginRepository(); 
 
+    // 임시 모든 유저 찾기 
     findAllUser = async (user) => {
         const allUsers = await this.loginRepository.findAllUser();
         console.log({allUsers}); 
@@ -21,6 +22,7 @@ class LoginService {
         });
     };
 
+    // 임시 유저 데이터 등록 
     createUser = async(nickname,name,password,email,point) => {
         const createUserData = await this.loginRepository.createUser(
             nickname,
@@ -38,6 +40,20 @@ class LoginService {
             email: createUserData.email, 
             point: createUserData.point 
         };
+    };  
+
+    // 로그인 기능 
+    login = async (nickname, password) => {
+        try {
+            const user = await this.loginRepository.login(nickname, password);
+            if (user){
+                return user; 
+            } else {
+                return 0; 
+            }
+        } catch (error){
+            throw error; 
+        }
     };
 
 };

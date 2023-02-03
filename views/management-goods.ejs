@@ -20,6 +20,17 @@
         border: black 1px solid;
         margin: 10px;
       }
+      .goods_form {
+        border: none;
+        width: 300px;
+        min-height: 100px;
+        background-color: #eeeff1;
+        display: inline-block;
+        vertical-align: middle;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        border-radius: 5px;
+      }
     </style>
   </head>
 
@@ -39,42 +50,34 @@
     ></script>
 
     <script>
-      function customerFind() {
-        let id = $("#customerId").val();
-        if (!id) {
-          alert("id를 입력해 주세요");
-        }
+      function goodsRegiste() {
+        let seller = $("#customerId").val();
+        let goodsname = $("#customerId").val();
+        let explan = $("#customerId").val();
+        let quantity = $("#customerId").val();
+        let price = $("#customerId").val();
+        let image = $("#customerId").val();
         $.ajax({
-          type: "GET",
-          url: `/management/customer/${id}`,
+          type: "POST",
+          url: `/management/goods/new`,
           success: function (response) {
-            let url = `/management/customer/${id}`;
-            location.replace(url);
+            alert("등록 성공");
+            location.reload();
           },
         });
       }
     </script>
     <section class="mainsection">
-      <div>
-        <h1>회원관리</h1>
-        <div>
-          회원검색(id) : <input id="customerId" /><button
-            onclick="customerFind()"
-          >
-            검색
-          </button>
-        </div>
-      </div>
+      <div>상품 등록 페이지 입니다</div>
 
-      <div>
-        <h1>상품관리</h1>
-        <div>
-          상품검색(상품명)<input id="goodsId" /><button
-            onclick="location.href='/management/goods'"
-          >
-            등록하기</button
-          ><button>검색</button>
-        </div>
+      <div class="goods_form">
+        <input type="text" id="seller" placeholder="판매자명" />
+        <input type="text" id="goodsname" placeholder="상품명" />
+        <input type="text" id="explan" placeholder="상품설명" />
+        <input type="number" id="quantity" placeholder="수량" />
+        <input type="number" id="price" placeholder="가격" />
+        <input type="file" name="image" id="image" />
+        <button onclick="goodsRegiste()">등록하기</button>
       </div>
     </section>
   </body>

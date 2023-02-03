@@ -6,12 +6,14 @@ class ManagerController {
   // 상품 추가
   goodsEnroll = async (req, res) => {
     try {
-      const { seller, goodsname, explan, quantity, price, image } = req.body;
+      console.log(req.body);
+      const { seller, goodsname, explain, quantity, price, image } = req.body;
       // const image = req.file.path;
+      console.log(seller, goodsname, explain, quantity, price, image);
       const goodsEnrollData = await this.managerService.goodsEnroll(
         seller,
         goodsname,
-        explan,
+        explain,
         image,
         quantity,
         price

@@ -51,15 +51,27 @@
 
     <script>
       function goodsRegiste() {
-        let seller = $("#customerId").val();
-        let goodsname = $("#customerId").val();
-        let explan = $("#customerId").val();
-        let quantity = $("#customerId").val();
-        let price = $("#customerId").val();
-        let image = $("#customerId").val();
+        let seller = $("#seller").val();
+        let goodsname = $("#goodsname").val();
+        let explain = $("#explan").val();
+        let quantity = $("#quantity").val();
+        let price = $("#price").val();
+        let image = $("#image").val();
+        console.log(seller);
         $.ajax({
           type: "POST",
           url: `/management/goods/new`,
+          contentType: "application/json",
+          dataType: "json",
+          data: JSON.stringify({
+            seller: seller,
+            goodsname: goodsname,
+            explain: explain,
+            quantity: quantity,
+            price: price,
+            image: image,
+          }),
+
           success: function (response) {
             alert("등록 성공");
             location.reload();

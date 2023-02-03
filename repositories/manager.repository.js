@@ -2,11 +2,11 @@ const { Customer, Good } = require("../models");
 
 class ManagerRepository {
   constructor() {}
-  goodsEnroll = async (seller, goodsname, explan, image, quantity, price) => {
+  goodsEnroll = async (seller, goodsname, explain, image, quantity, price) => {
     const goodsEnrollData = await Good.create({
       seller,
       goodsname,
-      explan,
+      explain,
       image,
       quantity,
       price,
@@ -16,7 +16,7 @@ class ManagerRepository {
   goodsModify = async (
     seller,
     goodsname,
-    explan,
+    explain,
     image,
     quantity,
     price,

@@ -6,7 +6,7 @@ class ManagerService {
   goodsEnroll = async (
     seller,
     goodsname,
-    explan,
+    explain,
     image,
     quantity,
     price,
@@ -15,7 +15,7 @@ class ManagerService {
     const goodsEnrollData = await this.managerRepository.goodsEnroll(
       seller,
       goodsname,
-      explan,
+      explain,
       image,
       quantity,
       price,

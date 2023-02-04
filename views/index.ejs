@@ -85,6 +85,21 @@
 
         window.open(url, title, 'scrollbars=yes, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
     }
+
+     // 즉시 실행 함수에 async를 줘서 구현 => getUserInfo 함수에서 비동기 요청을함
+     (async () => {
+        const userInfo = await getUserInfo();
+        console.log({ userInfo });
+        const isLogin = !!userInfo;
+        console.log({ isLogin });
+        // 아래 코드는 user페이지 화면이 보였다가
+        // users페이지로 이동하기에 잔상이 보임
+        // 이걸 해결하고 싶으면 middleware/login-check.middleware.js 사용
+        // if (isLogin) {
+        //   window.location.href = "/users";
+        // }
+        createHeaderButton(isLogin);
+      })();
     
 
     </script>

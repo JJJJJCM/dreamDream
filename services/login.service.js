@@ -56,6 +56,19 @@ class LoginService {
         }
     };
 
+    manager_login = async (nickname, password) => {
+        try {
+            const user = await this.loginRepository.manager_login(nickname, password);
+            if (user){
+                return user; 
+            } else {
+                return 0; 
+            }
+        } catch (error){
+            throw error; 
+        }
+    };
+
 };
 
 module.exports = LoginService; 

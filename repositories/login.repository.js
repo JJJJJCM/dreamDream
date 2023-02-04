@@ -1,4 +1,4 @@
-const { Customer } = require('../models'); 
+const { Customer, Manager } = require('../models'); 
 
 
 class LoginRepository {
@@ -25,6 +25,19 @@ class LoginRepository {
     login = async (nickname, password) => {
         try {
             const user = await Customer.findOne({
+                where: {nickname, password}, 
+            }); 
+
+            return user; 
+        } catch (error) {
+            throw new Error(error); 
+        }
+    }; 
+
+    // 매니저 로그인 기능 
+    manager_login = async (nickname, password) => {
+        try {
+            const user = await Manager.findOne({
                 where: {nickname, password}, 
             }); 
 

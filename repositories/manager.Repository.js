@@ -1,4 +1,4 @@
-const { Manager, Customer, Good } = require("../models");
+const { Customer, Good } = require("../models");
 
 class ManagerRepository {
   constructor() {}
@@ -34,15 +34,6 @@ class ManagerRepository {
       { where: { id: goodsId } }
     );
   };
-
-  createManager = async (nickname,name,password,email) => {
-    const createManagerData = await Manager.create({
-        nickname,name,password,email
-    }); 
-
-    return createManagerData; 
-}; 
-
 }
 
 module.exports = ManagerRepository;

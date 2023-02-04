@@ -22,8 +22,18 @@ app.get("/", (req, res) => {
   res.render("index.ejs");
 });
 
+// 로그인 페이지 
+app.get("/login",(req,res)=>{
+  res.render("login.ejs"); 
+});
 
+app.get("/users",(req,res)=>{
+  res.render("mainpage.ejs")
+})
+
+// 라우터 
 app.use("/login", loginRouter);
+
 
 http.listen(process.env.PORT, () => {
   console.log(`${process.env.PORT} 포트가 열렸습니다`);

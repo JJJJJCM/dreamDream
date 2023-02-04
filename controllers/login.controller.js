@@ -1,3 +1,4 @@
+const jwt = require("jsonwebtoken");
 const LoginService = require("../services/login.service");
 
 class LoginController {
@@ -31,9 +32,24 @@ class LoginController {
             if ( user === 0 ){
                 res.status(400).send({message:"아이디 및 비밀번호를 확인해주세요"});
             } else {
+                const token = jwt.sign({id:user.id}, process.env.JWT_SECRET_KEY);
+                res.cookie("jwt", token, {maxAge: 1000 * 60 * 60});
                 res.status(200).send({message: "드림드림에 오신 것을 환영합니다."});
             }
         } catch (error){
+            next(error);
+        }
+    };
+
+
+    // 로그아웃 
+    logout = async(req,res,next) => {
+        try {
+            if (req?.cookies.jwt) {
+                res.clearCookie("jwt"); 
+                res.redirect("/");
+            }
+        } catch (error) {
             next(error);
         }
     };

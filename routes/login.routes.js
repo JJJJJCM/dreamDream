@@ -10,5 +10,6 @@ router.get("/find", loginController.getUsers)
 
 // 로그인 기능
 router.post("/auth", loginController.login)
+router.get("/logout",loginController.logout)
 
 module.exports = router;

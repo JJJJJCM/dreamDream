@@ -48,36 +48,6 @@
 
     <script></script>
 
-    <!-- <script>
-      function goodsRegiste() {
-        let seller = $("#seller").val();
-        let goodsname = $("#goodsname").val();
-        let explain = $("#explan").val();
-        let quantity = $("#quantity").val();
-        let price = $("#price").val();
-        let image = $("#image").val();
-        console.log(seller);
-        $.ajax({
-          type: "POST",
-          url: `/management/goods/new`,
-          contentType: "application/json",
-          dataType: "json",
-          data: JSON.stringify({
-            seller: seller,
-            goodsname: goodsname,
-            explain: explain,
-            quantity: quantity,
-            price: price,
-            image: image,
-          }),
-
-          success: function (response) {
-            alert("등록 성공");
-            location.reload();
-          },
-        });
-      }
-    </script> -->
     <section class="mainsection">
       <div>상품 등록 페이지 입니다</div>
       <div class="goods_form">
@@ -95,15 +65,6 @@
           <button type="submit">등록하기</button>
         </form>
       </div>
-      <!-- <div class="goods_form">
-        <input type="text" id="seller" placeholder="판매자명" />
-        <input type="text" id="goodsname" placeholder="상품명" />
-        <input type="text" id="explain" placeholder="상품설명" />
-        <input type="number" id="quantity" placeholder="수량" />
-        <input type="number" id="price" placeholder="가격" />
-        <input type="file" name="image" id="image" />
-        <button onclick="goodsRegiste()">등록하기</button>
-      </div> -->
     </section>
   </body>
 </html>

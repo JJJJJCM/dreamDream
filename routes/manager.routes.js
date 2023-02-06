@@ -15,19 +15,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
-// APIs
-router.post(
-  "/goods/new",
-  upload.single("image"),
-  managerController.goodsEnroll
-);
-
-router.put(
-  "/goods/modify/:goodsId",
-  upload.single("image"),
-  managerController.goodsModify
-);
-
+// renders
 router.get("/", (req, res) => {
   res.render("management.ejs");
 });
@@ -35,6 +23,17 @@ router.get("/", (req, res) => {
 router.get("/goods", (req, res) => {
   res.render("management-goods.ejs");
 });
+
+router.get("/goods/:id", managerController.goodsGet);
+
+// APIs
+router.post(
+  "/goods/new",
+  upload.single("image"),
+  managerController.goodsEnroll
+);
+
+router.put("/goods/modify/:id", managerController.goodsModify);
 
 router.get("/customer/:id", managerController.customerGet);
 

@@ -43,12 +43,29 @@
         let id = $("#customerId").val();
         if (!id) {
           alert("id를 입력해 주세요");
+          return;
         }
         $.ajax({
           type: "GET",
           url: `/management/customer/${id}`,
           success: function (response) {
             let url = `/management/customer/${id}`;
+            location.replace(url);
+          },
+        });
+      }
+
+      function goodsFind() {
+        let id = $("#goodsId").val();
+        if (!id) {
+          alert("id를 입력해 주세요");
+          return;
+        }
+        $.ajax({
+          type: "GET",
+          url: `/management/goods/${id}`,
+          success: function (response) {
+            let url = `/management/goods/${id}`;
             location.replace(url);
           },
         });
@@ -69,11 +86,11 @@
       <div>
         <h1>상품관리</h1>
         <div>
-          상품검색(상품명)<input id="goodsId" /><button
-            onclick="location.href='/management/goods'"
-          >
-            등록하기</button
-          ><button>검색</button>
+          상품검색(상품명)<input id="goodsId" />
+          <button onclick="goodsFind()">검색</button>
+          <button onclick="location.href='/management/goods'">
+            등록하러가기
+          </button>
         </div>
       </div>
     </section>

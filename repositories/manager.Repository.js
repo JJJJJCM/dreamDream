@@ -17,17 +17,15 @@ class ManagerRepository {
     seller,
     goodsname,
     explain,
-    image,
     quantity,
     price,
     goodsId
   ) => {
-    const goodsEnrollData = await Good.update(
+    const goodsModifyData = await Good.update(
       {
         seller,
         goodsname,
-        explan,
-        image,
+        explain,
         quantity,
         price,
       },
@@ -35,14 +33,16 @@ class ManagerRepository {
     );
   };
 
-  createManager = async (nickname,name,password,email) => {
+  createManager = async (nickname, name, password, email) => {
     const createManagerData = await Manager.create({
-        nickname,name,password,email
-    }); 
+      nickname,
+      name,
+      password,
+      email,
+    });
 
-    return createManagerData; 
-}; 
-
+    return createManagerData;
+  };
 }
 
 module.exports = ManagerRepository;

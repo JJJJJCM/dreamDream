@@ -3,6 +3,11 @@ const { Manager, Customer, Good } = require("../models");
 
 class ManagerRepository {
   constructor() {}
+  customerDelete = async (password, id) => {
+    const customerData = await Customer.destroy({
+      where: { password: password, id: id },
+    });
+  };
 
   customerModify = async (nickname, name, email, point, id) => {
     const customerData = await Customer.update(

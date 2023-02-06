@@ -52,7 +52,7 @@
     <script></script>
     <script>
       let id = "<%=data.id%>";
-      function cusInfoModify() {
+      function customerModify() {
         let nickname = $("#nickname").val();
         let name = $("#name").val();
         let email = $("#email").val();
@@ -74,6 +74,25 @@
           },
         });
       }
+
+      function customerDelete() {
+        let pw = "<%=data.password%>";
+        const password = prompt("계정을 삭제하시려면 비밀번호를 입력해주세요");
+        if (password === pw) {
+          console.log(password, pw);
+          $.ajax({
+            type: "DELETE",
+            url: `/management/customer/delete/${id}`,
+            contentType: "application/json",
+            dataType: "json",
+            data: JSON.stringify({ password: password, id: id }),
+            success: function (response) {
+              console.log(id);
+              alert("삭제 완료");
+            },
+          });
+        }
+      }
     </script>
   </head>
 
@@ -86,8 +105,9 @@
         <input type="text" id="nickname" value="<%=data.nickname%>" />
         <input type="text" id="name" value="<%=data.name%>" />
         <input type="text" id="email" value="<%=data.email%>" />
-        <input type="number" id="point" value="<%=data.point%>" />
-        <button onclick="cusInfoModify()">수정하기</button>
+        <input type="number" id="point" value="<%=data.point%>" /><br />
+        <button onclick="customerModify()">수정하기</button>
+        <button onclick="customerDelete()">삭제하기</button>
       </div>
     </section>
   </body>

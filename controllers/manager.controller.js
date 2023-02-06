@@ -99,7 +99,19 @@ class ManagerController {
     }
   };
   // 고객 정보 삭제
-  customerDelete = () => {};
+  customerDelete = async (req, res, next) => {
+    try {
+      const { password, id } = req.body;
+      const customerData = await this.managerService.customerDelete(
+        password,
+        id
+      );
+      res.render("management");
+    } catch (err) {
+      console.log(err.massage);
+      res.status(400).json({ errorMessage: "수정 실패" });
+    }
+  };
 
   //매니저 등록
   createManager = async (req, res, next) => {

@@ -3,6 +3,13 @@ const ManagerRepository = require("../repositories/manager.Repository");
 class ManagerService {
   managerRepository = new ManagerRepository();
 
+  customerDelete = async (password, id) => {
+    const customerData = await this.managerRepository.customerDelete(
+      password,
+      id
+    );
+  };
+
   customerModify = async (nickname, name, email, point, id) => {
     const customerData = await this.managerRepository.customerModify(
       nickname,

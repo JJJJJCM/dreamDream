@@ -45,10 +45,7 @@ router.get("/customer/:id", managerController.customerGet);
 
 router.put("/customer/modify/:id", managerController.customerModify);
 
-router.delete(
-  "/users/manager/customer/delete",
-  managerController.customerDelete
-);
+router.delete("/customer/delete/:id", managerController.customerDelete);
 
 // 매니저 등록
 router.post("/managerRegister", managerController.createManager);

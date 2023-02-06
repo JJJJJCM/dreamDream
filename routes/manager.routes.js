@@ -16,9 +16,6 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // renders
-router.get("/", (req, res) => {
-  res.render("management.ejs");
-});
 
 router.get("/", managerController.ordersGet);
 

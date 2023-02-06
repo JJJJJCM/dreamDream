@@ -7,7 +7,14 @@ class ManagerController {
   ordersGet = async (req, res, next) => {
     try {
       const ordersData = await this.managerService.ordersGet();
-      res.render("management.ejs", { data: ordersData });
+      const imsi = {
+        id: 20,
+        content: "급해요",
+        status: 0,
+        customerId: 2,
+        goodsId: 1,
+      };
+      res.render("management.ejs", { data: imsi });
     } catch (err) {
       console.log(err);
       res.status(400).json({ errorMessage: "조회 실패" });

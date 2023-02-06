@@ -28,20 +28,67 @@
       body {
         background-image: linear-gradient(to right, LightSkyBlue, #e0ffff);
       }
+      .mainsection {
+        padding: 10px 50px 0px;
+      }
+      .mainsection > div {
+        border: black 1px solid;
+        margin: 10px;
+      }
+      .goods_form {
+        border: black 1px solid;
+        margin: 10px;
+        border: none;
+        width: 300px;
+        min-height: 100px;
+        background-color: #eeeff1;
+        display: inline-block;
+        vertical-align: middle;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        border-radius: 5px;
+      }
     </style>
+    <script></script>
     <script>
-      const test = "<%= customerId %>";
-      console.log(test);
+      let id = "<%=data.id%>";
+      function cusInfoModify() {
+        let nickname = $("#nickname").val();
+        let name = $("#name").val();
+        let email = $("#email").val();
+        let point = $("#point").val();
+        $.ajax({
+          type: "PUT",
+          url: `/management/customer/modify/${id}`,
+          contentType: "application/json",
+          dataType: "json",
+          data: JSON.stringify({
+            nickname: nickname,
+            name: name,
+            email: email,
+            point: point,
+          }),
+          success: function (response) {
+            console.log(id);
+            alert("수정 성공");
+          },
+        });
+      }
     </script>
   </head>
 
   <body>
     <%-include('./components/header-management.ejs') %>
-    <h1 class="container mt-5">관리자가 유저 정보 보는 페이지입니다.</h1>
 
-    <div><%= customerId %></div>
-    <div></div>
-    <div></div>
-    <div></div>
+    <section class="mainsection">
+      <div class="goods_form">
+        <div>유저 정보</div>
+        <input type="text" id="nickname" value="<%=data.nickname%>" />
+        <input type="text" id="name" value="<%=data.name%>" />
+        <input type="text" id="email" value="<%=data.email%>" />
+        <input type="number" id="point" value="<%=data.point%>" />
+        <button onclick="cusInfoModify()">수정하기</button>
+      </div>
+    </section>
   </body>
 </html>

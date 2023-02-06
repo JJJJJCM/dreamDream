@@ -4,6 +4,18 @@ const { Manager, Customer, Good } = require("../models");
 class ManagerRepository {
   constructor() {}
 
+  customerModify = async (nickname, name, email, point, id) => {
+    const customerData = await Customer.update(
+      { nickname, name, email, point },
+      { where: { id: id } }
+    );
+  };
+
+  customerGet = async (id) => {
+    const customerData = await Customer.findOne({ where: { id: id } });
+    return customerData;
+  };
+
   goodsGet = async (id) => {
     const goodsData = await Good.findOne({ where: { id: id } });
     return goodsData;

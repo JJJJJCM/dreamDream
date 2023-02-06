@@ -3,6 +3,21 @@ const ManagerRepository = require("../repositories/manager.Repository");
 class ManagerService {
   managerRepository = new ManagerRepository();
 
+  customerModify = async (nickname, name, email, point, id) => {
+    const customerData = await this.managerRepository.customerModify(
+      nickname,
+      name,
+      email,
+      point,
+      id
+    );
+  };
+
+  customerGet = async (id) => {
+    const customerData = await this.managerRepository.customerGet(id);
+    return customerData;
+  };
+
   goodsGet = async (id) => {
     const goodsData = await this.managerRepository.goodsGet(id);
     return goodsData;

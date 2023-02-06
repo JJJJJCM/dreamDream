@@ -69,18 +69,35 @@ class ManagerController {
   };
 
   // 고객 정보 페이지 들어가기
-  customerGet = (req, res) => {
+  customerGet = async (req, res) => {
     try {
-      const { id: customerId } = req.params;
-      console.log(customerId);
-      res.render("management-customer", { customerId });
+      const { id } = req.params;
+
+      const customerData = await this.managerService.customerGet(id);
+
+      res.render("management-customer", { data: customerData });
     } catch (err) {
       console.log(err.massage);
       res.status(400).json({ errorMessage: "조회 실패" });
     }
   };
   // 고객 정보 수정
-  customerModify = () => {};
+  customerModify = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { nickname, name, email, point } = req.body;
+      const customerData = await this.managerService.customerModify(
+        nickname,
+        name,
+        email,
+        point,
+        id
+      );
+    } catch (err) {
+      console.log(err.massage);
+      res.status(400).json({ errorMessage: "수정 실패" });
+    }
+  };
   // 고객 정보 삭제
   customerDelete = () => {};
 

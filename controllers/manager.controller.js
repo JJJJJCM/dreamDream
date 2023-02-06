@@ -69,20 +69,20 @@ class ManagerController {
     }
   };
   // 고객 정보 수정
-  customerModify = () => {};
+  customerModify = () => { };
   // 고객 정보 삭제
-  customerDelete = () => {};
+  customerDelete = () => { };
 
   //매니저 등록 
-  createManager = async (req,res,next) => {
-    const {nickname, name, password,email} = req.body
+  createManager = async (req, res, next) => {
+    const { nickname, name, password, email } = req.body
     const createManagerData = await this.managerService.createManager(
-        nickname, 
-        name, 
-        password,
-        email
+      nickname,
+      name,
+      password,
+      email
     );
-    res.status(201).json({data:createManagerData});
+    res.status(201).json({ data: createManagerData });
   };
 
 

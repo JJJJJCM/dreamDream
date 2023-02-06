@@ -27,26 +27,23 @@ class ManagerService {
       goodsId
     );
   };
-}
-
-goodsModify = async (
-  seller,
-  goodsname,
-  explain,
-  image,
-  quantity,
-  price,
-  goodsId
-) => {
-  const goodsEnrollData = await this.managerRepository.goodsModify(
+  goodsModify = async (
     seller,
     goodsname,
     explain,
-    image,
     quantity,
     price,
     goodsId
-  );
-};
+  ) => {
+    const goodsModifyData = await this.managerRepository.goodsModify(
+      seller,
+      goodsname,
+      explain,
+      quantity,
+      price,
+      goodsId
+    );
+  };
+}
 
 module.exports = ManagerService;

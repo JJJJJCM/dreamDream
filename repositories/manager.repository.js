@@ -18,17 +18,15 @@ class ManagerRepository {
     seller,
     goodsname,
     explain,
-    image,
     quantity,
     price,
     goodsId
   ) => {
-    const goodsEnrollData = await Good.update(
+    const goodsModifyData = await Good.update(
       {
         seller,
         goodsname,
         explain,
-        image,
         quantity,
         price,
       },

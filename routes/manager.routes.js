@@ -33,11 +33,7 @@ router.post(
   managerController.goodsEnroll
 );
 
-router.put(
-  "/goods/modify",
-  upload.single("image"),
-  managerController.goodsModify
-);
+router.put("/goods/modify/:id", managerController.goodsModify);
 
 router.get("/customer/:id", managerController.customerGet);
 

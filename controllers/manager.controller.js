@@ -15,30 +15,10 @@ class ManagerController {
         quantity,
         price
       );
-      res.status(200).json({ errorMessage: "등록 성공" });
+      res.status(200).json({ message: "등록 성공" });
     } catch (err) {
       console.log(err);
       res.status(400).json({ errorMessage: "등록 실패" });
-    }
-  };
-  // 상품 수정
-  goodsModify = async (req, res) => {
-    try {
-      const { seller, goodsname, explan, quantity, price } = req.body;
-      const goodsId = req.params;
-      const image = req.file.path;
-      const goodsModifyData = await this.managerService.goodsModify(
-        seller,
-        goodsname,
-        explan,
-        image,
-        quantity,
-        price,
-        goodsId
-      );
-    } catch (err) {
-      console.log(err);
-      res.status(400).json({ errorMessage: "요청 실패" });
     }
   };
 
@@ -47,10 +27,27 @@ class ManagerController {
     try {
       const { id } = req.params;
       const goodsData = await this.managerService.goodsGet(id);
-      console.log(goodsData);
-      // const data = JSON.stringify(goodsData);
-      // console.log(data);
       res.render("management-goods-detail.ejs", { data: goodsData });
+    } catch (err) {
+      console.log(err);
+      res.status(400).json({ errorMessage: "요청 실패" });
+    }
+  };
+
+  // 상품 수정
+  goodsModify = async (req, res) => {
+    try {
+      const { seller, goodsname, explain, quantity, price } = req.body;
+      const goodsId = req.params;
+      console.log(req.body, goodsId.id);
+      const goodsModifyData = await this.managerService.goodsModify(
+        seller,
+        goodsname,
+        explain,
+        quantity,
+        price,
+        goodsId
+      );
     } catch (err) {
       console.log(err);
       res.status(400).json({ errorMessage: "요청 실패" });

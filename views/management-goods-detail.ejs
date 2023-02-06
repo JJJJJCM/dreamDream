@@ -47,27 +47,65 @@
     ></script>
 
     <script>
-      console.log(data);
+      function goodsModify() {
+        let id = "<%=data.id%>";
+        let seller = $("#seller").val();
+        let goodsname = $("#goodsname").val();
+        let explain = $("#explan").val();
+        let quantity = $("#quantity").val();
+        let price = $("#price").val();
+        $.ajax({
+          type: "PUT",
+          url: `/management/goods/modify/${id}`,
+          contentType: "application/json",
+          dataType: "json",
+          data: JSON.stringify({
+            seller: seller,
+            goodsname: goodsname,
+            explain: explain,
+            quantity: quantity,
+            price: price,
+          }),
+          success: function (response) {
+            alert("수정 성공");
+            window.location.reload();
+          },
+        });
+      }
     </script>
 
     <section class="mainsection">
       <div>상품 조회 및 수정 페이지</div>
+      <div class="goods_form">
+        <div type="number" name="customerid"><%=data.id%></div>
+        <img style="width: 300px; height: 180px" src="/<%=data.image%>" /><br />
+        <input type="text" id="seller" value="<%=data.seller%>" />
+        <input type="text" id="goodsname" value="<%=data.goodsname%>" />
+        <input type="text" id="explain" value="<%=data.explain%>" />
+        <input type="number" id="quantity" value="<%=data.quantity%>" />
+        <input type="number" id="price" value="<%=data.price%>" />
+        <input type="file" id="image" value="<%=data.image%>" />
+        <button onclick="goodsModify()">등록하기</button>
+      </div>
+
       <div class="goods_form">
         <form
           action="/management/goods/modify"
           method="post"
           enctype="multipart/form-data"
         >
+          <div type="number" name="customerid"><%=data.id%></div>
           <img
             style="width: 300px; height: 180px"
             src="/<%=data.image%>"
           /><br />
+
           <input type="text" name="seller" value="<%=data.seller%>" />
           <input type="text" name="goodsname" value="<%=data.goodsname%>" />
           <input type="text" name="explain" value="<%=data.explain%>" />
           <input type="number" name="quantity" value="<%=data.quantity%>" />
           <input type="number" name="price" value="<%=data.price%>" />
-          <input type="file" name="image" />
+          <input type="file" name="image" value="<%=data.image%>" />
           <button type="submit">등록하기</button>
         </form>
       </div>

@@ -1,5 +1,8 @@
 const { findOneGoods, findAllGoods } = require('../repositories/good.repository')
 
+
+
+//상품 한개 조회
 const getGoodsOne = async (req, res) => {
     const { id } = req.params
 

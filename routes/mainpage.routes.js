@@ -8,54 +8,63 @@ const {manager_middleware} = require("../middleware/manager.middleware");
 router.get("/", (req,res)=>{
  // 만약 로그인..ing 이라면 
 
- if(res.locals.user && res.locals.user.type === "customer" ){  
+ if(res.locals.user ){  
     return res.redirect("/users")
  }
- if(res.locals.user && res.locals.user.type === "manager" ){
+ if(res.locals.user ){
     return res.redirect('/manager')
  }
 
- res.render("index.ejs", { components: "login",user: res.locals.user})
+ res.render("index.ejs", { user: res.locals.user})
 });
 
 //로그인 
 //유저 로그인 팝업창 
 router.get("/login",(req,res)=>{
-    if(res.locals.user && res.locals.user.type === "customer" ){  
+    if(res.locals.user ){  
         return res.redirect("/users")
      }
-     if(res.locals.user && res.locals.user.type === "manager" ){
+     if(res.locals.user){
         return res.redirect('/manager')
      }
     
-     res.render("login.ejs", { components: "login",user: res.locals.user})
+     res.render("login.ejs", { user: res.locals.user})
 });
 //관리자 로그인 팝업창 
 router.get("/managerlogin",(req,res)=>{
-     if(res.locals.user && res.locals.user.type === "customer" ){  
+     if(res.locals.user ){  
         return res.redirect("/users")
      }
-     if(res.locals.user && res.locals.user.type === "manager" ){
+     if(res.locals.user ){
         return res.redirect('/manager')
      }
     
-     res.render("managementlogin.ejs", { components: "login",user: res.locals.user})
+     res.render("managementlogin.ejs", {user: res.locals.user})
 });
 
 
+// 로그인 -> 유저 페이지 접속 
 router.get("/users",auth_middleware, (req,res)=>{
     if(!res.locals.user){
-        return res.render('index.ejs',{components: 'managerpage', user: res.locals.user});
+        return res.render('index.ejs',{user: res.locals.user});
     }
-    res.render('userpage.ejs',{components: 'managerpage', user: res.locals.user});
+    res.render('userpage.ejs',{user: res.locals.user});
 })
 
+// 로그인 -> 관리자 페이지 접속 
 router.get("/management", manager_middleware, (req,res)=>{
     if(!res.locals.user){
-        return res.render('index.ejs',{components: 'managerpage', user: res.locals.user});
+        return res.render('index.ejs',{user: res.locals.user});
     }
     res.render('managementpage.ejs')
 })
+
+router.get("/management/customer/${id}", manager_middleware, (req,res)=>{
+   if(!res.locals.user){
+      return res.render('managementpage.ejs',{user: res.locals.user});
+  }
+  res.render('management-customer.ejs')
+} )
 
 module.exports = router;
 

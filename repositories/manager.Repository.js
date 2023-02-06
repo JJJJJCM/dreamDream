@@ -1,4 +1,5 @@
 const { Customer, Good } = require("../models");
+const customer = require("../models/customer");
 
 class ManagerRepository {
   constructor() {}
@@ -17,22 +18,25 @@ class ManagerRepository {
     seller,
     goodsname,
     explain,
-    image,
     quantity,
     price,
     goodsId
   ) => {
-    const goodsEnrollData = await Good.update(
+    const goodsModifyData = await Good.update(
       {
         seller,
         goodsname,
-        explan,
-        image,
+        explain,
         quantity,
         price,
       },
       { where: { id: goodsId } }
     );
+  };
+
+  goodsGet = async (id) => {
+    const goodsData = await Good.findOne({ where: { id: id } });
+    return goodsData;
   };
 }
 

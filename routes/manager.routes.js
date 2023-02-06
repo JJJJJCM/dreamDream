@@ -44,10 +44,7 @@ router.delete(
   managerController.customerDelete
 );
 
-// 매니저 등록 
-router.post("/managerRegister",managerController.createManager)
-
-
-
+// 매니저 등록
+router.post("/managerRegister", managerController.createManager);
 
 module.exports = router;

@@ -1,25 +1,53 @@
-const authMiddleware = require("./middlewares/auth-middleware");
-const { Server } = require("http");
-const socketIo = require("socket.io");
 const express = require("express");
-const jwt = require("jsonwebtoken");
-const { Op } = require("sequelize");
-require('dotenv').config()
-
-const app = express();
-const http = Server(app);
-const io = socketIo(http);
-
-app.set("view engine", "ejs");
-app.set("views", "./views");
-
 const cookieParser = require("cookie-parser");
+require("dotenv").config();
+const managerRouter = require("./routes/manager.routes");
+const loginRouter = require("./routes/login.routes");
+const app = express();
+
+// socket.io
+const http = require("http").createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(http);
+
+// 미들웨어
+app.set("view engine", "ejs");
+app.use("/public", express.static("public"));
 app.use(cookieParser());
+app.use(express.json());
 
-// 매니저 api
-app.use("/users/manager");
+app.use(express.static("./assets"));
+app.use("/assets", express.static("assets"));
 
-app.listen(process.env.PORT, () => {
-    console.log(`${process.env.PORT} 포트가 열렸습니다`)
+//라우터 
+app.use("/login", loginRouter);
+app.use("/management", managerRouter);
+
+// 메인 페이지
+app.get("/", (req, res) => {
+  res.render("index.ejs");
 });
-e.exports = app;
+
+
+// 로그인 페이지 
+// 고객 로그인 
+app.get("/login",(req,res)=>{
+  res.render("login.ejs"); 
+});
+// 관리자 로그인 
+app.get("/manager",(req,res)=>{
+  res.render("managementlogin.ejs"); 
+});
+
+
+// 고객 페이지 
+app.get("/users",(req,res)=>{
+  res.render("mainpage.ejs")
+})
+
+
+
+
+http.listen(process.env.PORT, () => {
+  console.log(`${process.env.PORT} 포트가 열렸습니다`);
+});

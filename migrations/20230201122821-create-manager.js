@@ -9,7 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      managerId: {
+      nickname: {
         type: Sequelize.STRING,
         allowNull: false,
       },

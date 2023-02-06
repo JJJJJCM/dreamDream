@@ -16,9 +16,8 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // renders
-router.get("/", (req, res) => {
-  res.render("management.ejs");
-});
+
+router.get("/", managerController.ordersGet);
 
 router.get("/goods", (req, res) => {
   res.render("management-goods.ejs");
@@ -35,14 +34,17 @@ router.post(
 
 router.put("/goods/modify/:id", managerController.goodsModify);
 
+router.post(
+  "/goods/modify/image/:id",
+  upload.single("image"),
+  managerController.goodsImgModify
+);
+
 router.get("/customer/:id", managerController.customerGet);
 
-router.put("/customer/modify", managerController.customerModify);
+router.put("/customer/modify/:id", managerController.customerModify);
 
-router.delete(
-  "/users/manager/customer/delete",
-  managerController.customerDelete
-);
+router.delete("/customer/delete/:id", managerController.customerDelete);
 
 // 매니저 등록
 router.post("/managerRegister", managerController.createManager);

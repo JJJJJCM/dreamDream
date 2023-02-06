@@ -3,6 +3,17 @@ const ManagerService = require("../services/manager.service");
 
 class ManagerController {
   managerService = new ManagerService();
+
+  ordersGet = async (req, res, next) => {
+    try {
+      const ordersData = await this.managerService.ordersGet();
+      res.render("management.ejs", { data: ordersData });
+    } catch (err) {
+      console.log(err);
+      res.status(400).json({ errorMessage: "조회 실패" });
+    }
+  };
+
   // 상품 추가
   goodsEnroll = async (req, res, next) => {
     try {

@@ -20,6 +20,8 @@ router.get("/", (req, res) => {
   res.render("management.ejs");
 });
 
+router.get("/", managerController.ordersGet);
+
 router.get("/goods", (req, res) => {
   res.render("management-goods.ejs");
 });

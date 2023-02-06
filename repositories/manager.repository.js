@@ -1,8 +1,14 @@
 const { where } = require("sequelize");
-const { Manager, Customer, Good } = require("../models");
+const { Manager, Customer, Good, Order } = require("../models");
 
 class ManagerRepository {
   constructor() {}
+
+  ordersGet = async () => {
+    const ordersData = await Order.findAll({});
+    return ordersData;
+  };
+
   customerDelete = async (password, id) => {
     const customerData = await Customer.destroy({
       where: { password: password, id: id },

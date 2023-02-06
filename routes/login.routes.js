@@ -12,7 +12,7 @@ router.post("/test", loginController.createUser)
 router.get("/find", loginController.getUsers)
 
 // 고객 로그인 기능
-router.post("/auth", loginController.login)
+router.post("/login", loginController.login)
 router.get("/logout",loginController.logout)
 
 

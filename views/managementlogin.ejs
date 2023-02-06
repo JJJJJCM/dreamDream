@@ -138,7 +138,7 @@
                     formData.append("nickname", nickname);
                     formData.append("password",password);
 
-                    const res = await axios.post("http://localhost:3000/login/managerauth", formData,{
+                    const res = await axios.post("http://localhost:3000/api/users/managerauth", formData,{
                         headers: {
                             "Content-Type":"application/json",
                         },

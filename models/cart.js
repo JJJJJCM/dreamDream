@@ -15,15 +15,8 @@ module.exports = (sequelize, DataTypes) => {
   }
   cart.init(
     {
-      image: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
+
       quantity: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
-      price: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },

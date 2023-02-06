@@ -35,6 +35,12 @@ router.post(
 
 router.put("/goods/modify/:id", managerController.goodsModify);
 
+router.post(
+  "/goods/modify/image/:id",
+  upload.single("image"),
+  managerController.goodsImgModify
+);
+
 router.get("/customer/:id", managerController.customerGet);
 
 router.put("/customer/modify", managerController.customerModify);

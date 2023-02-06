@@ -7,6 +7,23 @@ class ManagerService {
     const goodsData = await this.managerRepository.goodsGet(id);
     return goodsData;
   };
+  goodsModify = async (
+    seller,
+    goodsname,
+    explain,
+    quantity,
+    price,
+    goodsId
+  ) => {
+    const goodsModifyData = await this.managerRepository.goodsModify(
+      seller,
+      goodsname,
+      explain,
+      quantity,
+      price,
+      goodsId
+    );
+  };
 
   goodsEnroll = async (
     seller,
@@ -24,6 +41,13 @@ class ManagerService {
       image,
       quantity,
       price,
+      goodsId
+    );
+  };
+
+  goodsImgModify = async (image, goodsId) => {
+    const goodsImgData = await this.managerRepository.goodsImgModify(
+      image,
       goodsId
     );
   };

@@ -1,3 +1,4 @@
+const { response } = require("express");
 const ManagerService = require("../services/manager.service");
 
 class ManagerController {
@@ -38,8 +39,9 @@ class ManagerController {
   goodsModify = async (req, res) => {
     try {
       const { seller, goodsname, explain, quantity, price } = req.body;
-      const goodsId = req.params;
-      console.log(req.body, goodsId.id);
+      const goodsId = req.params.id;
+      console.log(req.body.seller);
+      console.log(goodsId);
       const goodsModifyData = await this.managerService.goodsModify(
         seller,
         goodsname,
@@ -54,22 +56,23 @@ class ManagerController {
     }
   };
 
+  goodsImgModify = async (req, res) => {
+    try {
+      const goodsId = req.params.id;
+      const image = req.file.path;
+      console.log(image);
+      const goodsImgData = await this.managerService.goodsImgModify(
+        image,
+        goodsId
+      );
+    } catch (err) {}
+  };
+
   // 고객 정보 페이지 들어가기
   customerGet = (req, res) => {
     try {
       const { id: customerId } = req.params;
       console.log(customerId);
-      // const customerData = Customer.findOne({
-      //   where: { id: customerId },
-      // });
-      // const customerData = {
-      //   customerId,
-      //   nickname: "bob",
-      //   name: "유상우",
-      //   email: "rookas99@naver.com",
-      //   point: 50000,
-      // };
-      // console.log(customerData);
       res.render("management-customer", { customerId });
     } catch (err) {
       console.log(err.massage);

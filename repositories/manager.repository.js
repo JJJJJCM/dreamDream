@@ -1,7 +1,21 @@
+const { where } = require("sequelize");
 const { Manager, Customer, Good } = require("../models");
 
 class ManagerRepository {
   constructor() {}
+
+  goodsGet = async (id) => {
+    const goodsData = await Good.findOne({ where: { id: id } });
+    return goodsData;
+  };
+
+  goodsImgModify = async (image, goodsId) => {
+    const goodsImgData = await Good.update(
+      { image },
+      { where: { id: goodsId } }
+    );
+  };
+
   goodsEnroll = async (seller, goodsname, explain, image, quantity, price) => {
     const goodsEnrollData = await Good.create({
       seller,

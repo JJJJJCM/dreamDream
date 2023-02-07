@@ -3,6 +3,7 @@ const cookieParser = require("cookie-parser");
 require("dotenv").config();
 const managerRouter = require("./routes/manager.routes");
 const loginRouter = require("./routes/login.routes");
+const signupRouter = require("./routes/signup.routes"); //회원가입
 const app = express();
 
 // socket.io
@@ -22,6 +23,7 @@ app.use("/assets", express.static("assets"));
 //라우터
 app.use("/login", loginRouter);
 app.use("/management", managerRouter);
+app.use("/sign", signRouter); //회원가입
 
 // 메인 페이지
 app.get("/", (req, res) => {

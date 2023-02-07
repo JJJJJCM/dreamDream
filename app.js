@@ -14,7 +14,7 @@ const io = new Server(http);
 
 const goodsRouter = require('./routes/good.routes')
 const reviewsRouter = require('./routes/review.routes')
-const cartRouter = require('./routes/cart.routes')
+// const cartRouter = require('./routes/cart.routes')
 
 // 미들웨어
 // app.use("/public", express.static("public"));
@@ -28,7 +28,6 @@ app.use(mainRouter);
 app.use('/api', router)
 app.use('/goods', goodsRouter)
 app.use('/reviews', reviewsRouter)
-app.use('/cart', cartRouter)
 
 
 app.set('views', __dirname + '/views');

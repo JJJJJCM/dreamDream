@@ -29,12 +29,12 @@ class ReviewService {
             goods_id, stars, content, customer_id
         )
         return createReviews
-        return {
-            stars: createReviews.stars,
-            content: createReviews.content,
-            goods_id: createReviews.goods_id,
-            customer_id: createReviews.customer_id
-        }
+        // return {
+        //     stars: createReviews.stars,
+        //     content: createReviews.content,
+        //     goods_id: createReviews.goods_id,
+        //     customer_id: createReviews.customer_id
+        // }
     }
 }
 

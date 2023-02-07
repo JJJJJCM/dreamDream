@@ -14,25 +14,27 @@ class ReviewController {
     }
 
     //상품별 댓글 작성
-    postCommentsOfGoods = async (req, res, next) => {
+    postCommentsOfGoods = async (req, res) => {
         const { goods_id } = req.params
-        console.log(goods_id)
-
-        const { id } = res.locals.user
         const { stars, content } = req.body
 
-        const goodsComments = await this.reviewService.createCommentsOfGoods(goods_id, stars, content, id)
+        if (!res.locals.user) {
+            return res.status(500).json({ message: "로그인 하세요" })
+        }
+
+        const { id } = res.locals.user
+
+        const goodsComments = await this.reviewService.createCommentsOfGoods(
+            goods_id,
+            stars,
+            content,
+            id
+        )
 
         res.status(200).json({ data: goodsComments })
     }
 }
 
-// //상품별 댓글 작성
-// const postCommentOfGoods = async (req, res) => {
-//     const { id: goods_id } = req.params
-//     const { stars, content, customer_id } = req.body
-//     const postComments = await createCommentsOfGoods(stars, content, goods_id, customer_id)
-//     res.json(postComments)
-// }
+
 
 module.exports = ReviewController

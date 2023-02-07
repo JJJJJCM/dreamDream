@@ -15,7 +15,6 @@ module.exports = (sequelize, DataTypes) => {
   }
   cart.init(
     {
-
       quantity: {
         type: DataTypes.INTEGER,
         allowNull: false,

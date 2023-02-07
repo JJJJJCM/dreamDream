@@ -23,6 +23,12 @@
       crossorigin="anonymous"
     ></script>
 
+
+    <%-include('./components/header-user.ejs') %>
+    <%-include('./components/amount.ejs') %>
+      <!-- amount end-->
+    <h1 class="container mt-5">유저 페이지입니다.</h1>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script>
       // 로그아웃 => 프론트 쪽에서 로그아웃 기능 => 백엔드 쪽에서 구현했음
       // function signOut() {
@@ -44,6 +50,15 @@
         // }
         createHeaderButton(isLogin);
       })();
+    // const user = '<%= user %>>';
+    // const userId = '<%= user.userId %>';
+    // 로그아웃 => 프론트 쪽에서 로그아웃 기능 => 백엔드 쪽에서 구현했음 
+    // function signOut() {
+    //     localStorage.clear();
+    //     window.location.href = "/";
+    // }
+
+      
     </script>
 
     <script

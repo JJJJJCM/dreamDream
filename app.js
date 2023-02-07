@@ -12,8 +12,8 @@ const http = require('http').createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(http);
 
-const goodsRouter = require('./routes/good.routes')
-const reviewsRouter = require('./routes/review.routes')
+// const goodsRouter = require('./routes/good.routes')
+// const reviewsRouter = require('./routes/review.routes')
 // const cartRouter = require('./routes/cart.routes')
 
 // 미들웨어
@@ -26,8 +26,9 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }));
 app.use(mainRouter);
 app.use('/api', router)
-app.use('/goods', goodsRouter)
-app.use('/reviews', reviewsRouter)
+// app.use('/cart', cartRouter)
+// app.use('/goods', goodsRouter)
+// app.use('/reviews', reviewsRouter)
 
 
 app.set('views', __dirname + '/views');

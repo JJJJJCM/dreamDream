@@ -7,7 +7,7 @@ class CartController {
     //장바구니 post
     //중복으로 들어가면 중복이라고 메세지를 띄워주던지
     //수량 +1 하던지
-    basketPost = async (req, res, next) => {
+    basketPost = async (req, res) => {
         const { id: goods_id } = req.params  //id로 받아온 애를 goods_id로 쓴다
         let { quantity } = req.body
         quantity = Number(quantity)

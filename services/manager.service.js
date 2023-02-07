@@ -3,6 +3,15 @@ const ManagerRepository = require("../repositories/manager.Repository");
 class ManagerService {
   managerRepository = new ManagerRepository();
 
+  orderStatusPlus = async (status, orderId) => {
+    const orderStatusData = await this.managerRepository.orderStatusPlus();
+  };
+
+  orderDetailGet = async () => {
+    const orderData = await this.managerRepository.orderDetailGet();
+    return orderData;
+  };
+
   ordersGet = async () => {
     const ordersData = await this.managerRepository.ordersGet();
     return ordersData;

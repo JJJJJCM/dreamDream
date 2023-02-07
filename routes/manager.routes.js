@@ -19,6 +19,8 @@ const upload = multer({ storage: storage });
 
 router.get("/", managerController.ordersGet);
 
+router.get("/order/:id", managerController.orderDetailGet);
+
 router.get("/goods", (req, res) => {
   res.render("management-goods.ejs");
 });
@@ -26,6 +28,9 @@ router.get("/goods", (req, res) => {
 router.get("/goods/:id", managerController.goodsGet);
 
 // APIs
+
+router.put("/order/status/:id", managerController.orderStatusPlus);
+
 router.post(
   "/goods/new",
   upload.single("image"),

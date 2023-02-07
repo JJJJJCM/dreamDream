@@ -83,7 +83,7 @@ class ManagerController {
         image,
         goodsId
       );
-    } catch (err) {}
+    } catch (err) { }
   };
 
   // 고객 정보 페이지 들어가기

@@ -20,7 +20,16 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      goods_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      customer_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
       }
+
     });
   },
   async down(queryInterface, Sequelize) {

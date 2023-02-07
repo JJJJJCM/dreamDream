@@ -4,16 +4,59 @@ const ManagerService = require("../services/manager.service");
 class ManagerController {
   managerService = new ManagerService();
 
+  orderStatusPlus = async (req, res, next) => {
+    try {
+      const orderId = req.params;
+      const { status } = req.body;
+      const orderStatusData = await this.managerService.orderStatusPlus(
+        status,
+        orderId
+      );
+    } catch (err) {
+      console.log(err);
+      res.status(400).json({ errorMessage: "조회 실패" });
+    }
+  };
+
+  orderDetailGet = async (req, res, next) => {
+    try {
+      // const orderData = await this.managerService.orderDetailGet();
+      const orderId = req.params;
+      const imsi = [
+        {
+          id: 20,
+          content: "급해요",
+          status: 0,
+          customerId: 2,
+          goodsId: 1,
+        },
+      ];
+      res.render("management-order-detail.ejs", { data: imsi });
+    } catch (err) {
+      console.log(err);
+      res.status(400).json({ errorMessage: "조회 실패" });
+    }
+  };
+
   ordersGet = async (req, res, next) => {
     try {
       const ordersData = await this.managerService.ordersGet();
-      const imsi = {
-        id: 20,
-        content: "급해요",
-        status: 0,
-        customerId: 2,
-        goodsId: 1,
-      };
+      const imsi = [
+        {
+          id: 20,
+          content: "급해요",
+          status: 0,
+          customerId: 2,
+          goodsId: 1,
+        },
+        {
+          id: 10,
+          content: "급해요",
+          status: 0,
+          customerId: 2,
+          goodsId: 2,
+        },
+      ];
       res.render("management.ejs", { data: imsi });
     } catch (err) {
       console.log(err);

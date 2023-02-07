@@ -81,12 +81,6 @@
       </ul>
   </div>
     <script>
-      console.log("<%=data.id%>");
-      console.log("<%=data.content%>");
-      console.log("<%=data.status%>");
-      console.log("<%=data.customerId%>");
-      console.log("<%=data.goodsId%>");
-
       function customerFind() {
         let id = $("#customerId").val();
         if (!id) {
@@ -124,6 +118,8 @@
           },
         });
       }
+      console.log("<%=data[0].id%>");
+      console.log("<%=data[1].id%>");
     </script>
     <section class="mainsection">
       <div>
@@ -150,14 +146,28 @@
 
       <div>
         <h1>주문관리</h1>
-        <div>
-          주문번호 : <%=data.id%> 요청사항 : <%=data.content%> 주문현황 :
-          <%=data.status%> 주문자번호 : <%=data.customerId%> 상품번호 :
-          <%=data.goodsId%>
-          <button onclick="location.href='/management/order/1'">
-            상세정보
-          </button>
-        </div>
+        <table>
+          <th>주문번호</th>
+          <th>요청사항</th>
+          <th>주문현황</th>
+          <th>주문자번호</th>
+          <th>상품번호</th>
+          <th></th>
+          <% for(let i = 0; i<data.length; i++){ %>
+          <tr>
+            <td><%=data[i].id%></td>
+            <td><%=data[i].content%></td>
+            <td><%=data[i].status%></td>
+            <td><%=data[i].customerId%></td>
+            <td><%=data[i].goodsId%></td>
+            <td>
+              <button onclick="location.href='/management/order/<%=data[i].id%>'">
+                상세정보
+              </button>
+            </td>
+          </tr>
+          <% } %>
+        </table>
       </div>
     </section>
   </body>

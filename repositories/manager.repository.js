@@ -4,6 +4,18 @@ const { Manager, Customer, Good, Order } = require("../models");
 class ManagerRepository {
   constructor() {}
 
+  orderStatusPlus = async (status, orderId) => {
+    const orderStatusData = await Order.update(
+      { status: status + 1 },
+      { where: { id: orderId } }
+    );
+  };
+
+  orderDetailGet = async () => {
+    const orderData = await Order.findOne({});
+    return orderData;
+  };
+
   ordersGet = async () => {
     const ordersData = await Order.findAll({});
     return ordersData;

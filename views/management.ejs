@@ -37,7 +37,49 @@
 
   <body>
     <%-include('./components/header-management.ejs') %>
-
+    <div class="main_text0" id="link_main_text0">
+      <h1>관리자</h1>
+      <div class="contents1"> 드림드림을 관리해볼까 </div>
+      
+      <ul class="icons">
+          <li>
+              <div class="icon_img">
+                   <!-- 아이콘 이미지크기 width:136.11 height:127.66 -->
+                  <img src="../public/images/상품등록.png">
+              </div>
+              <div class="contents1_bold"> 상품관리 </div>
+              <div class="contents3"> 상품을 등록해볼까요</div>
+              <div class="h-container">
+                상품검색(상품명) : <input id="customerId" size="5"/>
+                  <div class="click1" onclick="goodsFind()""> 검색하기 </div>
+                </div>
+                <div class="click" onclick="location.href='/api/management/goods'"> 상품등록 </div>
+          </li>
+          <li>
+              <div class="icon_img">
+                   <!-- 아이콘 이미지크기 width:136.11 height:127.66 -->
+                  <img src="../public/images/회원관리.png">
+              </div>
+              <div class="contents1_bold"> 회원관리 </div>
+              <div class="contents3"> 회원을 관리해볼까요 </div>
+              <div class="h-container">
+              회원검색(id) : <input id="customerId" size="5"/>
+                <div class="click1" onclick="customerFind()"> 검색하기 </div>
+              </div>
+              
+                  
+          </li>
+          <li>
+              <div class="icon_img">
+                   <!-- 아이콘 이미지크기 width:136.11 height:127.66 -->
+                  <img src="../public/images/주문관리.png">
+              </div>
+              <div class="contents1_bold"> 주문관리 </div>
+              <div class="contents3"> 주문들을 관리해볼까요</div>
+              <div class="click" onclick="location.href='#'"> 클릭하기 </div>
+          </li>
+      </ul>
+  </div>
     <script>
       console.log("<%=data.id%>");
       console.log("<%=data.content%>");
@@ -53,9 +95,9 @@
         }
         $.ajax({
           type: "GET",
-          url: `/management/customer/${id}`,
+          url: `/api/management/customer/${id}`,
           success: function (response) {
-            let url = `/management/customer/${id}`;
+            let url = `/api/management/customer/${id}`;
             location.replace(url);
           },
           error: function (error) {
@@ -72,9 +114,9 @@
         }
         $.ajax({
           type: "GET",
-          url: `/management/goods/${id}`,
+          url: `/api/management/goods/${id}`,
           success: function (response) {
-            let url = `/management/goods/${id}`;
+            let url = `/api/management/goods/${id}`;
             location.replace(url);
           },
           error: function (error) {

@@ -27,8 +27,41 @@
     <%-include('./components/header-management.ejs') %>
     <%-include('./components/amount-manager.ejs') %>
       <!-- amount end-->
-    <h1 class="container mt-5">매니저 페이지입니다.</h1>
-    <%-include('./components/management.ejs') %>
+      <div class="main_text0" id="link_main_text0">
+        <h1>관리자</h1>
+        <div class="contents1"> 드림드림을 관리해볼까 </div>
+        
+        <ul class="icons">
+            <li>
+                <div class="icon_img">
+                     <!-- 아이콘 이미지크기 width:136.11 height:127.66 -->
+                    <img src="../public/images/상품등록.png">
+                </div>
+                <div class="contents1_bold"> 상품등록 </div>
+                <div class="contents3"> 상품을 등록해볼까요</div>
+                <div class="click"> 클릭하기 </div>
+            </li>
+            <li>
+                <div class="icon_img">
+                     <!-- 아이콘 이미지크기 width:136.11 height:127.66 -->
+                    <img src="../public/images/회원관리.png">
+                </div>
+                <div class="contents1_bold"> 회원관리 </div>
+                <div class="contents3"> 회원을 관리해볼까요 </div>
+                    <div class="click"> 클릭하기 </div>
+            </li>
+            <li>
+                <div class="icon_img">
+                     <!-- 아이콘 이미지크기 width:136.11 height:127.66 -->
+                    <img src="../public/images/주문관리.png">
+                </div>
+                <div class="contents1_bold"> 주문관리 </div>
+                <div class="contents3"> 주문들을 관리해볼까요</div>
+                <div class="click"> 클릭하기 </div>
+            </li>
+        </ul>
+    </div>
+
     
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script>
@@ -60,6 +93,8 @@
           },
         });
       }
+
+      
     </script>
   </body>
 </html>

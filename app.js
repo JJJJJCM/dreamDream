@@ -1,9 +1,8 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
 require("dotenv").config();
-const managerRouter = require("./routes/manager.routes");
-const loginRouter = require("./routes/login.routes");
-const signupRouter = require("./routes/signup.routes"); //회원가입
+// const managerRouter = require("./routes/manager.routes");
+// const loginRouter = require("./routes/login.routes");
 const app = express();
 const router = require('./routes');
 const mainRouter = require('./routes/mainpage.routes');
@@ -40,10 +39,6 @@ app.use(express.static(__dirname + '/views'));
 // app.use("/login", loginRouter);
 // app.use("/management", managerRouter);
 
-//라우터
-app.use("/login", loginRouter);
-app.use("/management", managerRouter);
-app.use("/sign", signRouter); //회원가입
 
 // 메인 페이지
 // app.get("/", (req, res) => {

@@ -56,7 +56,7 @@ router.get("/management", manager_middleware, (req,res)=>{
     if(!res.locals.user){
         return res.render('index.ejs',{user: res.locals.user});
     }
-    res.render('managementpage.ejs')
+    res.render('management.ejs')
 })
 
 router.get("/management/customer/${id}", manager_middleware, (req,res)=>{
@@ -64,6 +64,13 @@ router.get("/management/customer/${id}", manager_middleware, (req,res)=>{
       return res.render('managementpage.ejs',{user: res.locals.user});
   }
   res.render('management-customer.ejs')
+} )
+
+router.get("/goodsdetail", manager_middleware, (req,res)=>{
+   if(!res.locals.user){
+      return res.render('managementpage.ejs',{user: res.locals.user});
+  }
+  res.render('goodsdetail.ejs')
 } )
 
 module.exports = router;

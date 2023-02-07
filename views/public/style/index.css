@@ -113,3 +113,77 @@
 .amount > li:not(:last-child) > div{
   border-right: 1px solid #e1e1e1;
 }
+
+/* main_text0 */
+.main_text0{
+  width: 100%; 
+  height: 601px;
+  background: #f1f2f3;
+  margin-top: -132px;
+}
+
+.main_text0 > h1 {
+  padding-top: 116px;
+  text-align: center;
+}
+
+.main_text0 > .contents1 {
+  text-align: center;
+
+}
+
+.icons{
+  display: flex;
+  width: 1280px;
+  height: 302px;
+  margin: auto;
+}
+
+.icons > li {
+  flex:1;
+  background: #fff;
+  margin-top: 49px;
+  height: 302px;
+  text-align: center;
+}
+
+.icons > li > .icon_img{
+  margin-top: 37px;
+}
+
+.icons > li:not(:last-child){
+  margin-right: 21px;
+}
+
+.icons .contents1 {
+  width: 190px;
+  margin: auto;
+  /* letter-spacing: -1px; */
+}
+
+.click{
+  width: 100px;
+  height: 30px;
+  background: #2F7AF4;
+  color: #fff;
+  font-size: 12px;
+  line-height: 30px;
+  margin: 25px auto;
+  cursor: pointer;
+}
+
+
+.h-container .click1{ 
+  display:inline-block;
+  line-height: 30px;
+
+}
+
+.click1{
+  width: 80px;
+  height: 30px;
+  background: #2F7AF4;
+  color: #fff;
+  font-size: 12px;
+  cursor: pointer;
+}

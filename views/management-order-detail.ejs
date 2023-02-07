@@ -46,26 +46,45 @@
   </head>
 
   <body>
+    <script>
+      function statusplusone() {
+        let id = "<%=data[0].id%>";
+        let status = "<%=data[0].status%>";
+        $.ajax({
+          type: "PUT",
+          url: `/management/order/status/${id}`,
+          contentType: "application/json",
+          dataType: "json",
+          data: JSON.stringify({
+            status: status,
+          }),
+          success: function (response) {
+            alert("수정 성공");
+          },
+        });
+      }
+    </script>
     <%-include('./components/header-management.ejs') %>
 
-    <script></script>
-
     <section class="mainsection">
-      <div>상품 등록 페이지 입니다</div>
-      <div class="goods_form">
-        <form
-          action="/management/goods/new"
-          method="post"
-          enctype="multipart/form-data"
-        >
-          <input type="text" name="seller" placeholder="판매자명" />
-          <input type="text" name="goodsname" placeholder="상품명" />
-          <input type="text" name="explain" placeholder="상품설명" />
-          <input type="number" name="quantity" placeholder="수량" />
-          <input type="number" name="price" placeholder="가격" />
-          <input type="file" name="image" />
-          <button type="submit">등록하기</button>
-        </form>
+      <div>
+        <h1>주문 상세 정보</h1>
+        <table>
+          <th>주문번호</th>
+          <th>요청사항</th>
+          <th>주문현황</th>
+          <th>주문자번호</th>
+          <th>상품번호</th>
+          <th></th>
+          <tr>
+            <td><%=data[0].id%></td>
+            <td><%=data[0].content%></td>
+            <td><%=data[0].status%></td>
+            <td><%=data[0].customerId%></td>
+            <td><%=data[0].goodsId%></td>
+            <td><button onclick="statusplusone()">주문현황+1</button></td>
+          </tr>
+        </table>
       </div>
     </section>
   </body>

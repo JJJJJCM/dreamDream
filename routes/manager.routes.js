@@ -15,19 +15,39 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
+// renders
+
+router.get("/", managerController.ordersGet);
+
+router.get("/order/:id", managerController.orderDetailGet);
+
+router.get("/goods", (req, res) => {
+  res.render("management-goods.ejs");
+});
+
+router.get("/goods/:id", managerController.goodsGet);
+
 // APIs
+
+router.put("/order/status/:id", managerController.orderStatusPlus);
+
 router.post(
   "/goods/new",
   upload.single("image"),
   managerController.goodsEnroll
 );
 
-router.put(
-  "/goods/modify/:goodsId",
+router.put("/goods/modify/:id", managerController.goodsModify);
+
+router.post(
+  "/goods/modify/image/:id",
   upload.single("image"),
-  managerController.goodsModify
+  managerController.goodsImgModify
 );
 
+router.get("/customer/:id", managerController.customerGet);
+
+router.put("/customer/modify/:id", managerController.customerModify);
 // router.get("/", (req, res) => {
 //   res.render("management.ejs");
 // });
@@ -48,6 +68,9 @@ router.delete(
 router.post("/managerRegister",managerController.createManager)
 
 
+router.delete("/customer/delete/:id", managerController.customerDelete);
 
+// 매니저 등록
+router.post("/managerRegister", managerController.createManager);
 
 module.exports = router;

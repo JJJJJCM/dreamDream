@@ -1,9 +1,9 @@
 // const { request } = require('express');
 const jwt = require('jsonwebtoken');
-const {Customer} = require("../models");
+// const {Customer} = require("../models");
 const {Manager} = require("../models");
 
-async function auth_middleware(req, res, next) {
+async function manager_middleware(req, res, next) {
     try {
       // console.log(req.cookies.jwt);
   
@@ -18,7 +18,7 @@ async function auth_middleware(req, res, next) {
       // 3. jwt verify 함수를 이용해서 쿠키에서 받아온 토큰값 인증
       const { id: id } = jwt.verify(token, process.env.JWT_SECRET_KEY);
   
-      const user = await Customer.findByPk(id);
+      const user = await Manager.findByPk(id);
       if (user) {
         // 4. 인증이 성공 할시 res.locals.user = user 정보를 담아서 보내자
         res.locals.user = user;
@@ -34,4 +34,4 @@ async function auth_middleware(req, res, next) {
     }
   }
   
-  module.exports = { auth_middleware };
+  module.exports = { manager_middleware };

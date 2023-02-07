@@ -28,16 +28,15 @@ router.put(
   managerController.goodsModify
 );
 
-router.get("/", (req, res) => {
-  res.render("management.ejs");
-});
+// router.get("/", (req, res) => {
+//   res.render("management.ejs");
+// });
 
 router.get("/goods", (req, res) => {
   res.render("management-goods.ejs");
 });
 
 router.get("/customer/:id", managerController.customerGet);
-
 router.put("/customer/modify", managerController.customerModify);
 
 router.delete(

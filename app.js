@@ -41,9 +41,9 @@ app.use(express.static(__dirname + '/views'));
 // app.use("/management", managerRouter);
 
 //라우터
-app.use("/login", loginRouter);
-app.use("/management", managerRouter);
-app.use("/sign", signRouter); //회원가입
+// app.use("/login", loginRouter);
+// app.use("/management", managerRouter);
+// app.use("/sign", signRouter); //회원가입
 
 // 메인 페이지
 // app.get("/", (req, res) => {

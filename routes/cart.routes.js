@@ -8,6 +8,9 @@ const CartController = require('../controllers/cart.controller')
 const cartcontroller = new CartController()
 const { auth_middleware } = require('../middleware/auth.middleware')
 
+router.get('/', auth_middleware, cartcontroller.basketGet)
 router.post('/:id', auth_middleware, cartcontroller.basketPost)
+router.patch('/', auth_middleware, cartcontroller.basketPatch)
+router.delete('/:id', auth_middleware, cartcontroller.basketDelete)
 
 module.exports = router

@@ -1,8 +1,27 @@
+const { post } = require('../routes')
 const CartService = require('../services/cart.service')
 
 class CartController {
 
     cartService = new CartService()
+
+    basketGet = async (req, res) => {
+        const { id: customer_id } = res.locals.user
+
+        const get = await this.cartService.getCart(customer_id)
+        res.status(200).json({ data: get })
+
+        // try {
+
+        //     const get = await this.cartService.getCart(customer_id)
+        //     res.status(200).json({ data: get })
+
+        // } catch (err) {
+
+        //     res.status(400).json({ message: err.message })
+
+        // }
+    }
 
     //장바구니 post
     //중복으로 들어가면 중복이라고 메세지를 띄워주던지
@@ -30,6 +49,23 @@ class CartController {
             res.status(400).json({ message: err.message })
         }
 
+    }
+
+    basketPatch = async (req, res) => {
+        const { id: customer_id } = res.locals.user
+        const { quantity, goods_id } = req.body
+
+        const basketPatch = await this.cartService.patchCart(goods_id, quantity, customer_id)
+
+        res.status(200).json({ data: basketPatch })
+    }
+
+    basketDelete = async (req, res) => {
+        const { id } = req.params
+
+        const basketDelete = await this.cartService.deleteCart(id)
+
+        res.status(200).json({ message: "삭제 되었습니다" })
     }
 
 
